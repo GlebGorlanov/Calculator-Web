@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main # или 'master', если твоя главная ветка так называется
+      - main
 
 jobs:
   deploy:
@@ -21,6 +21,8 @@ jobs:
       - name: Install dependencies
         run: npm install --legacy-peer-deps
 
+      - name: Ensure Vite is executable
+        run: chmod +x ./node_modules/.bin/vite
 
       - name: Build
         run: npm run build
